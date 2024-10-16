@@ -18,12 +18,12 @@ def get_price_minus_fees(name: str, price: float)-> float:
 
     first_greater = next(value for value in intervals if value >= price)
     index_of_first_greater = intervals.index(first_greater)
-    fee_subtraction = round(price - fees[index_of_first_greater - 1], 2)
-    fee = round(price - fee_subtraction, 2)
+    amount_minus_fee = round(price - fees[index_of_first_greater - 1], 2)
+    fee = round(price - amount_minus_fee, 2)
     
-    print(f"{name} -  get_price_minus_fees: input: {price}, | fee: {fee} | input - fee: {fee_subtraction}")
+    print(f"{name} -  get_price_minus_fees: input: {price}, | fee: {fee} | input - fee: {amount_minus_fee}")
 
-    return fee_subtraction
+    return amount_minus_fee
 
 
 def get_price_plus_fees(name: str, input_value: float) -> float:
@@ -42,12 +42,12 @@ def get_price_plus_fees(name: str, input_value: float) -> float:
             fees.append(round(last_element + 0.02, 2))
 
     index_of_last_element = intervals.index(intervals[-1])
-    amount_without_fee = round(input_value + fees[index_of_last_element], 2)
+    amount_plus_fee = round(input_value + fees[index_of_last_element], 2)
     
-    fee = round(amount_without_fee - input_value, 2)
-    print(f"{name} - get_price_plus_fees: {input_value}| fee: {fee} | input - fee: {amount_without_fee}")
+    fee = round(amount_plus_fee - input_value, 2)
+    print(f"{name} - get_price_plus_fees: {input_value}| fee: {fee} | input - fee: {amount_plus_fee}")
     
-    return amount_without_fee
+    return amount_plus_fee
 
 
 
